@@ -53,6 +53,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="css\default.css" />
     <Content Include="default.html" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
@@ -60,7 +61,7 @@
     <Content Include="images\storelogo.png" />
     <Content Include="js\collections\todos.js" />
     <Content Include="js\default.js" />
-    <Content Include="css\default.css" />
+    <Content Include="css\default-old.css" />
     <Content Include="js\lib\backbone.js" />
     <Content Include="js\lib\backbone.localStorage.js" />
     <Content Include="js\lib\jquery.js" />
