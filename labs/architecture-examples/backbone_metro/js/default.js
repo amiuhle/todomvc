@@ -1,5 +1,8 @@
 ﻿// For an introduction to the Blank template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkId=232509
+
+var ENTER_KEY = 13;
+
 (function () {
     "use strict";
 
@@ -17,7 +20,9 @@
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
             }
-            args.setPromise(WinJS.UI.processAll());
+            args.setPromise(WinJS.UI.processAll().then(function () {
+                new window.app.AppView();
+            }));
         }
     };
 
