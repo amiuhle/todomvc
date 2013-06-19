@@ -15,6 +15,7 @@
     <script src="/js/lib/jquery.js"></script>
     <script src="/js/lib/lodash.js"></script>
     <script src="/js/lib/backbone.js"></script>
+    <script src="/js/lib/metrobone.js"></script>
     <script src="/js/lib/backbone.localStorage.js"></script>
 
     <script src="/js/models/todo.js"></script>
@@ -34,7 +35,9 @@
 		<section id="main">
 			<input id="toggle-all" type="checkbox">
 			<label for="toggle-all">Mark all as complete</label>
-			<ul id="todo-list"></ul>
+			<div id="todo-list" data-win-control="WinJS.UI.ListView" data-win-options="{ itemTemplate: select('#todo-item') }">
+
+			</div>
 		</section>
 		<footer id="footer"></footer>
 	</section>
@@ -43,6 +46,16 @@
 		<p>Written by <a href="https://github.com/addyosmani">Addy Osmani</a></p>
 		<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 	</div>
+    <div id="todo-item" data-win-control="WinJS.Binding.Template">
+        <div>
+            <div class="view">
+			    <input class="toggle" type="checkbox" data-win-bind="checked: completed">
+			    <label data-win-bind="innerText: title"></label>
+			    <button class="destroy"></button>
+		    </div>
+		    <input class="edit" data-win-bind="value: title">
+        </div>
+    </div>
     <script type="text/template" id="item-template">
 		<div class="view">
 			<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>

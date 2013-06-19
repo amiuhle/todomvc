@@ -66,6 +66,7 @@
     <Content Include="js\lib\backbone.localStorage.js" />
     <Content Include="js\lib\jquery.js" />
     <Content Include="js\lib\lodash.js" />
+    <Content Include="js\lib\metrobone.js" />
     <Content Include="js\models\todo.js" />
     <Content Include="js\routers\router.js" />
     <Content Include="js\views\app.js" />

@@ -6,6 +6,15 @@ var ENTER_KEY = 13;
 (function () {
     "use strict";
 
+    jQuery.fn.extend({
+        winControl: function () {
+            var elem = this[0];
+            if (elem) {
+                return elem.winControl;
+            }
+        }
+    });
+
     WinJS.Binding.optimizeBindingReferences = true;
 
     var app = WinJS.Application;

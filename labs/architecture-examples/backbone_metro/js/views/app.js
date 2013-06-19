@@ -32,10 +32,22 @@ $(function( $ ) {
 			this.$footer = this.$('#footer');
 			this.$main = this.$('#main');
 
-			this.listenTo(app.Todos, 'add', this.addOne);
+			this.todoList = $('#todo-list').winControl();
+		    // this.todoList.itemDataSource = Metrobone.proxyCollection(app.Todos);
+			var proxy = new Metrobone.DataSource(app.Todos);
+			this.todoList.itemDataSource = proxy.datasource();
+
+			this.todoList.itemTemplate = function (itemPromise) {
+			    return itemPromise.then(function (item) {
+			        var view = new app.TodoView({ model: item.data });
+			        return view.render().el
+			    });
+			};
+
+			/*this.listenTo(app.Todos, 'add', this.addOne);
 			this.listenTo(app.Todos, 'reset', this.addAll);
 			this.listenTo(app.Todos, 'change:completed', this.filterOne);
-			this.listenTo(app.Todos, 'filter', this.filterAll);
+			this.listenTo(app.Todos, 'filter', this.filterAll);*/
 			this.listenTo(app.Todos, 'all', this.render);
 
 			app.Todos.fetch();
@@ -70,15 +82,16 @@ $(function( $ ) {
 
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
-		addOne: function( todo ) {
-			var view = new app.TodoView({ model: todo });
-			$('#todo-list').append( view.render().el );
+		addOne: function (todo) {
+            console.log('App addOne');
+			/*var view = new app.TodoView({ model: todo });
+			$('#todo-list').append( view.render().el );*/
 		},
 
 		// Add all items in the **Todos** collection at once.
 		addAll: function() {
-			this.$('#todo-list').html('');
-			app.Todos.each(this.addOne, this);
+			/*this.$('#todo-list').html('');
+			app.Todos.each(this.addOne, this);*/
 		},
 
 		filterOne: function( todo ) {

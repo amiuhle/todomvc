@@ -1,48 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity
-    Name="85995ffc-1fe4-4a39-af6e-cbb66d264a74"
-    Version="1.0.0.0"
-    Publisher="CN=IEUser" />
-
+  <Identity Name="85995ffc-1fe4-4a39-af6e-cbb66d264a74" Version="1.0.0.0" Publisher="CN=IEUser" />
   <Properties>
     <DisplayName>backbone_metro</DisplayName>
     <PublisherDisplayName>IEUser</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application 
-      Id="App"
-      StartPage="default.html">
-
-      <VisualElements
-        DisplayName="backbone_metro"
-        Logo="images\logo.png"
-        SmallLogo="images\smalllogo.png"
-        Description="backbone_metro"
-        ForegroundText="light"
-        BackgroundColor="#464646">
-
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Backbone Metro" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="TodoMVC with Backbone.js and WinJS" ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="images\splashscreen.png" />
-
       </VisualElements>
     </Application>
   </Applications>
-
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
-
 </Package>
