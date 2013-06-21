@@ -48,10 +48,15 @@ $(function() {
 		},
 
 		isHidden: function() {
-			var isCompleted = this.model.get('completed');
+		    var isCompleted = this.model.get('completed');
+		    var title = this.model.get('title');
+		    if (app.SearchRegex) {
+		        console.log('test: ' + app.SearchRegex.test(title));
+		    }
 			return ( // hidden cases only
 				(!isCompleted && app.TodoFilter === 'completed')
 				|| (isCompleted && app.TodoFilter === 'active')
+                || (!!app.SearchRegex  && !app.SearchRegex.test(title))
 			);
 		},
 

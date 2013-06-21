@@ -26,7 +26,7 @@ $(function( $ ) {
 		// At initialization we bind to the relevant events on the `Todos`
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting todos that might be saved in *localStorage*.
-		initialize: function() {
+		initialize: function () {
 			this.allCheckbox = this.$('#toggle-all')[0];
 			this.$input = this.$('#new-todo');
 			this.$footer = this.$('#footer');
@@ -48,16 +48,22 @@ $(function( $ ) {
 			this.listenTo(app.Todos, 'reset', this.addAll);*/
 			this.listenTo(app.Todos, 'change:completed', this.filterOne);
 			this.listenTo(app.Todos, 'filter', this.filterAll);
+			this.listenTo(app.Todos, 'search', this.searchAll);
 			this.listenTo(app.Todos, 'all', this.render);
 
-			app.Todos.fetch();
+			this.ready = new WinJS.Promise(function (complete, error, progress) {
+			    app.Todos.once('sync', complete);
+			    app.Todos.fetch();
+			});
 		},
 
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
-		render: function() {
+		render: function () {
+		    console.log('render: ', arguments);
 			var completed = app.Todos.completed().length;
 			var remaining = app.Todos.remaining().length;
+			var search = app.SearchRegex ? app.SearchRegex.source : false;
 
 			if ( app.Todos.length ) {
 				this.$main.show();
@@ -65,13 +71,16 @@ $(function( $ ) {
 
 				this.$footer.html(this.statsTemplate({
 					completed: completed,
-					remaining: remaining
+					remaining: remaining,
+					search: search
 				}));
 
-				this.$('#filters li a')
-					.removeClass('selected')
-					.filter('[href="#/' + ( app.TodoFilter || '' ) + '"]')
-					.addClass('selected');
+				if (!search) {
+				    this.$('#filters li a')
+                        .removeClass('selected')
+                        .filter('[href="#/' + (app.TodoFilter || '') + '"]')
+                        .addClass('selected');
+				}
 			} else {
 				this.$main.hide();
 				this.$footer.hide();

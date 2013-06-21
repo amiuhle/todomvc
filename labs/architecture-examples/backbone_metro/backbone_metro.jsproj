@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="css\bg.png" />
+    <Content Include="css\searchResults.css" />
     <Content Include="default.html" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
@@ -69,8 +70,10 @@
     <Content Include="js\lib\metrobone.js" />
     <Content Include="js\models\todo.js" />
     <Content Include="js\routers\router.js" />
+    <Content Include="js\searchResults.js" />
     <Content Include="js\views\app.js" />
     <Content Include="js\views\todos.js" />
+    <Content Include="searchResults.html" />
     <None Include="backbone_metro_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
